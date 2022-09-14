@@ -22,7 +22,80 @@
       .top{
         margin-left: 2.5em
       }
+      .Image{
+        width: 100px;
+        height: 120px;
+      }
+      .hovertext {
+      position: relative;
+      border-bottom: 1px dotted rgb(17, 15, 17);
+      
+      }
 
+      .hovertext:before {
+      content: attr(data-hover);
+      visibility: hidden;
+      opacity: 0;
+      width: 140px;
+      background-color: rgba(15, 7, 7, 0.671);
+      
+    
+      color: #fff;
+      text-align: center;
+      border-radius: 5px;
+      padding: 5px 0;
+      transition: opacity 1s ease-in-out;
+
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      top: 110%;
+}
+   
+     .hovertext:hover:before {
+     opacity: 1;
+     visibility: visible;
+}
+  p.speech {
+  position: relative;
+  width: 200px;
+  height: 60px;
+  left: 100px;
+  background-color: #FFFFFF;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid rgb(17, 15, 15);
+}
+  p.speech::before {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -10px;
+  top: -10px;
+  border: 20px solid;
+  border-color: #070606 transparent transparent transparent;
+  -webkit-transform: rotate(25deg);
+  -moz-transform: rotate(25deg);
+  transform: rotate(25deg);
+}
+  p.speech::after {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -9px;
+  top: -9px;
+  border: 19px solid;
+  border-color: #FFFFFF transparent transparent transparent;
+  -webkit-transform: rotate(25deg);
+  -moz-transform: rotate(25deg);
+  transform: rotate(25deg);
+}
+
+  
     </style>
   </head>
   <body>
@@ -54,11 +127,16 @@
       <p style="color:white;">This service is completely free and open source.</p>
       <h1 style="color:white;">Predict the Pokémon!</h1>
       <form action="/api/predict/url", method = "GET">
-        <label style="color:white;" for= "url">Pokémon URL: </label>
+        <span class="hovertext" data-hover="Input an URL in this text box"><label style="color:white;" for= "url">Pokemon URL:</label></span>
         <input type="text" id="url" name="url"><br><br>
         <input class="btn btn-primary" type="submit" value="Submit">
       </form>
-      <p style="color:white;">Enter an URL and click submit to get the Pokémon's name</p>
+      <p style="color:white;">Enter an URL and click submit to get the Pokémon's name</p>       
+      <p><img src="https://th.bing.com/th/id/R.354ef4f51f61322c155975d0b7f18416?rik=Q5%2fVu2N9%2fwnnew&riu=http%3a%2f%2fi2.kym-cdn.com%2fprofiles%2ficons%2fbig%2f000%2f246%2f720%2f9aa.gif&ehk=LrWwlxPnsdRvQk4V8ZBHitBpH1PMwN5nsQWkZjKK1Hw%3d&risl=&pid=ImgRaw&r=0" class="Image"></p>
+      <p class="speech">Hey Im Genesect welcome to PokeRecognition-API!</p>
+   
+    
+    
     </div>
   </body>
 </html>
