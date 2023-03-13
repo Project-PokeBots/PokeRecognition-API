@@ -13,7 +13,7 @@ templates = Jinja2Templates(directory = str(BASE_PATH / "templates"))
 app = FastAPI(
     title = "PokéRecognition",
     description = "Free Pokémon Recognition API",
-    version = "0.0.1",
+    version = "0.0.2",
     license_info={
         "name": "Apache 2.0",
         "url": "https://www.apache.org/licenses/LICENSE-2.0.html",
