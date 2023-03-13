@@ -1,10 +1,11 @@
-from core.metadata import *
+from utils.metadata import *
 from fastapi import FastAPI, Request
 from pathlib import Path
 from fastapi.templating import Jinja2Templates
-from core.tf_predictor import url_predict
+from utils.predictor import url_predict
 from fastapi.responses import RedirectResponse, HTMLResponse
 import uvicorn
+
 
 BASE_PATH = Path(__file__).resolve().parent
 templates = Jinja2Templates(directory = str(BASE_PATH / "templates"))

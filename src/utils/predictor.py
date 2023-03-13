@@ -4,6 +4,7 @@ from PIL import Image
 from io import BytesIO
 from numpy import array, argmax
 
+
 # As of now, model is not included in the code
 model = models.load_model("keras_model.h5")
 
