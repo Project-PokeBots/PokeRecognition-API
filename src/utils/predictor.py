@@ -1,4 +1,4 @@
-from tensorflow.keras import models
+from keras.models import load_model
 from urllib.request import Request, urlopen
 from PIL import Image
 from io import BytesIO
@@ -6,7 +6,7 @@ from numpy import array, argmax
 
 
 # As of now, model is not included in the code
-model = models.load_model("PokeRecognitionInceptionV3.h5")
+model = load_model("PokeRecognitionInceptionV3.h5")
 
 # Predict given url
 def url_predict(url):
