@@ -3,8 +3,8 @@ from fastapi import FastAPI, Request
 from pathlib import Path
 from fastapi.templating import Jinja2Templates
 from utils.predictor import url_predict
-from fastapi.responses import RedirectResponse, HTMLResponse
-import uvicorn
+from fastapi.responses import JSONResponse, RedirectResponse, HTMLResponse
+from uvicorn import run
 
 
 BASE_PATH = Path(__file__).resolve().parent
@@ -22,15 +22,18 @@ app = FastAPI(
 )
 
 # Error handlers
-@app.exception_handler(403)
-async def exception_403(request: Request):
-    return {
+@app.exception_handler(ValueError)
+async def value_error_exception_handler(request: Request, exc: ValueError):
+    return JSONResponse(
+        status_code = 400,
+        content = {
         "success": False,
-        "error": request
-    }
+        "message": str(exc)
+        }
+    )
 
 @app.exception_handler(404)
-async def exception_404(request: Request):
+async def exception_404(_, __):
     return RedirectResponse("/")
 
 # Docs endpoints
@@ -81,9 +84,9 @@ async def predict_pokémon_url(url):
 
 # Start program
 if __name__ == "__main__":
-    uvicorn.run(
+    run(
         "main:app",
         host = "127.0.0.1",
         port = 5000,
-        log_level = "info"
+        log_level = "debug"
     )
