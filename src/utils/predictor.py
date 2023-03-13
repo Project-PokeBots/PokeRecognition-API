@@ -6,7 +6,7 @@ from numpy import array, argmax
 
 
 # As of now, model is not included in the code
-model = models.load_model("keras_model.h5")
+model = models.load_model("PokeRecognitionInceptionV3.h5")
 
 # Predict given url
 def url_predict(url):
